@@ -3,16 +3,18 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-import time
-
-start = time.time()
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 
 # If you don't want to use the graphic environment, use the following codes:
 options = webdriver.FirefoxOptions()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
-driver = webdriver.Firefox(options=options)
-driver2 = webdriver.Firefox(options=options)
+
+driver = webdriver.Firefox(service=FirefoxService("geckodriver.exe"),
+                           options=options)
+driver2 = webdriver.Firefox(service=FirefoxService("geckodriver.exe"),
+                            options=options)
 # driver = webdriver.Firefox()
 # driver2 = webdriver.Firefox()
 url = "https://animesp.xyz/login"
